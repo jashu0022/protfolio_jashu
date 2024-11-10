@@ -138,6 +138,16 @@ body {
   display: block;
 }
 
+.btn_con{
+  background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.btn_con:hover{
+  color: white;
+}
 .text1 {
   color: yellow;
   font-size: 60px;
