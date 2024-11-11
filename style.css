@@ -5,6 +5,16 @@
   margin: 0px;
   font-family: sans-serif;
 }
+/* Fullscreen background video */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Keep video behind other content */
+}
 
 body {
   background: #000;
@@ -20,6 +30,10 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding-top: 2%;
+  padding-bottom: 30px;
+  margin-left: -51px;
+
+  background-color: rgb(0, 0, 0);
 }
 .navbar li {
   position: relative;
@@ -97,11 +111,12 @@ body {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: -2px;
+    top: -40px;
     right: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 9;
+    left: 43px;
   }
 
   .navbar li {
@@ -117,7 +132,6 @@ body {
     display: flex; /* Show navbar items when the menu is toggled */
   }
 }
-
 
 .container {
   text-align: center;
@@ -140,14 +154,16 @@ body {
 
 .btn_con{
   background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
 }
-.btn_con:hover{
+
+.btn_con:hover {
   color: white;
 }
+
 .text1 {
   color: yellow;
   font-size: 60px;
@@ -155,14 +171,18 @@ body {
   letter-spacing: 8px;
   margin-top: -15px;
   margin-bottom: 20px;
-  background: black;
+  background-color: black; /* Background color */
+  display: inline-block; /* Ensure the background only covers the text */
+  padding: 0 10px; /* Adds some padding around the text */
   position: relative;
   animation: text 3s 1;
+  z-index: 1;
 }
 
 .text2 {
   font-size: 30px;
   color: white;
+  visibility: visible;
 }
 
 @media (max-width: 768px) { /* Mobile view adjustments */
@@ -185,20 +205,31 @@ body {
     font-size: 20px; /* Adjust font size */
   }
 }
+
 @keyframes text {
-  0%{
+  0% {
     color: black;
     margin-bottom: -40px;
   }
-  30%{
+  30% {
     letter-spacing: 25px;
     margin-bottom: -40px;
   }
-  85%{
+  85% {
     letter-spacing: 8px;
     margin-bottom: -40px;
   }
+  100% {
+    color: yellow;
+    margin-bottom: 20px;
+  }
 }
+
+/* Hide .text2 while .text1 animation is running */
+.text1.animation-active + .text2 {
+  visibility: hidden;
+}
+
 #skills {
     display: flex;
   
@@ -360,7 +391,7 @@ body {
   overflow: hidden;
 
   font-weight: bold;
-  font-size: 30px;
+  font-size: 24px;
   color: #FFF;
 
   z-index: 2;
